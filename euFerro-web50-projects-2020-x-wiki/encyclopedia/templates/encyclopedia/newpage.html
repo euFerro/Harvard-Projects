@@ -1,0 +1,38 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Add a new page
+{% endblock %}
+
+{% block body %}
+    <form class="container" action="{% url 'wiki:newpage' %}" method="post">
+        <header>
+            <h1>Add a new page</h1>
+        </header>
+        {% csrf_token %}
+        <div class="row">
+            <div class="mb-3 col-7">
+                <label class="form-label" for="id_for_entry_title">Title</label>
+                {% if form.entry_title.errors %}
+                {% for error in form.entry_title.errors %}
+                <div class="alert alert-danger" role="alert">{{ error|escape }}</div>
+                {% endfor %}
+                {% endif %}
+                <input class="form-control" name="entry_title" type="text" maxlength="50">
+                <div id="titleHelper" class="form-text">Describe your article with a meaningful title</div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            {% if form.entry_content.errors %}
+                {% for error in form.entry_content.errors %}
+                <div class="alert alert-danger" role="alert">{{ error|escape }}</div>
+                {% endfor %}
+            {% endif %}
+            <textarea name="entry_content" class="form-control" rows="25"></textarea>
+        </div>
+        <div class="mb-3 row">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+{% endblock %}
+

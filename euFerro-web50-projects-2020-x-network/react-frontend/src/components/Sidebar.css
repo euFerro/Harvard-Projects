@@ -1,0 +1,121 @@
+/* Side bar style -------------------------------------------- */
+
+.side-bar-div {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    height: 100vh;
+    position: fixed;
+    background-color: black;
+    padding-left: 15vmin;
+    z-index: 1000;
+    border-right: none;
+}
+.mainlink-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: 100%;
+    width: max-content;
+    padding-left: 0px;
+}
+
+#side-bar {
+    position: fixed;
+}
+
+/* Medium size */
+@media only screen and (max-width: 1100px) {
+    .side-bar-div {
+        display: flex;
+        flex-direction: column;
+        width: max-content;
+        height: 100vh;
+        position: relative;
+        bottom: 0;
+        background-color: #000;
+        padding-left: 0px;
+        z-index: 1000;
+    }
+    .mainlink-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        height: 100%;
+        width: 100%;
+        padding-left: 0px;
+    }
+}
+
+/* Small size */
+@media only screen and (max-width: 660px) {
+    #login-link {
+        display: none;
+    }
+    #register-link {
+        display: none;
+    }
+    .side-bar-div {
+        display: flex;
+        flex-direction: row;
+        width: 100vw;
+        height: 10vh;
+        position: relative;
+        bottom: 0;
+        background-color: #000;
+        padding-left: 0px;
+        z-index: 1000;
+    }
+    .mainlink-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        height: 100%;
+        width: 100%;
+        padding-left: 0px;
+    }
+}
+
+
+/* User bar style ------------------------------------------ */
+#user-bar {
+    padding: 12px;
+}
+.user-bar-item {
+    display: flex;
+    flex-direction: column;
+}
+.username-div {
+    display: flex;
+    flex-direction: column;
+}
+.username {
+    color: #ddd;
+    text-decoration: none;
+}
+.subtle-username {
+    color: var(--line-color);
+}
+.username:hover {
+    color: #00eeff;
+    text-decoration: none;
+}
+
+.logout-side-div {
+    margin-left: 10vmin;
+}
+.logout {
+    width: 22px;
+    height: 22px;
+}
+.logout:hover {
+    filter: invert(30%) sepia(100%) hue-rotate(10deg) saturate(2000%) brightness(200%);
+}
+
+/* Medium screen */
+@media only screen and (max-width: 660px) {
+
+    #user-bar {
+        display: none;
+    }
+}

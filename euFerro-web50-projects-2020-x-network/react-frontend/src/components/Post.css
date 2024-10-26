@@ -1,0 +1,105 @@
+/* Post style ------------------------------------------ */
+.post-div {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.post {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #303030;
+    padding: 10px;
+}
+.post:hover {
+    background-color: var(--hover-color);
+}
+.post-profile-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    border-bottom: 1px solid var(--line-color);
+    border-radius: 50%;
+    width: var(--profile-size);
+    height: var(--profile-size);
+}
+.profile-pic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--profile-size);
+    height: var(--profile-size);
+    border-radius: 50%;
+}
+.post-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.post-header {
+    display: flex;
+    justify-content: start;
+}
+.name-link {
+    text-decoration: none !important;
+}
+.post-fullname {
+    color: white;
+    font-weight: bold;
+    font-size: calc(12px + 0.5vmin);
+}
+.post-fullname:hover {
+    color: aqua !important;
+    text-decoration: none !important;
+}
+.post-info {
+    margin-left: 10px;
+    color: var(--subtle-text-color);
+    font-size: calc(12px + 0.4vmin);
+}
+.post-img-div {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: start;
+    border-radius: 15px;
+    margin: 10px;
+    width: fit-content;
+}
+.post-img {
+    border-radius: 15px;
+    width: 100%;
+    max-width: 500px;
+}
+.post-text {
+    color: #ddd;
+    font-size: calc(12px + 0.4vmin);
+    padding-right: 35px;
+}
+.post-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    margin-top: 5px;
+    color: var(--subtle-text-color);
+    width: 100%;
+}
+#simple-post-text {
+    margin-top: 10px;
+    color: white;
+    font-size: calc(12px + 0.5vmin);
+    width: 50vmin;
+    border-bottom: var(--line-color);
+}
+
+.nodecoration {
+    text-decoration: none;
+}
+
+
+@media only screen and (max-width: 660px) {
+    /* TODO */
+}

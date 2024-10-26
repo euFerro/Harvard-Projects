@@ -1,0 +1,94 @@
+/* Side bar style -------------------------------------------- */
+#side-bar {
+    position: fixed;
+}
+
+.logo-div {
+    margin-top: 10px;
+    margin-left: 8vmin;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+.logo {
+    color: aqua;
+    font-size: larger;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.logout {
+    width: 22px;
+    height: 22px;
+}
+.logout:hover {
+    filter: invert(30%) sepia(100%) hue-rotate(10deg) saturate(2000%) brightness(200%);
+}
+
+.side-bar-div {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+}
+.side-bar {
+    height: 90%;
+    min-width: 65px;
+    margin-left: 10vmin;
+    width: 25vw;
+}
+.side-item-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    margin-left: 10vmin;
+    margin-top: 1vmin;
+    border-radius: 45px;
+    width: fit-content;
+    padding: 5px;
+}
+.side-item-div:hover {
+    background-color: var(--hover-color);
+}
+.side-item {
+    text-decoration: none !important;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    color: #ddd;
+    font-size: 20px;
+}
+.side-item:hover {
+    color: #00eeff !important;
+}
+
+/* User bar style ------------------------------------------ */
+#user-bar {
+    margin-left: 15vmin;
+}
+.user-bar-item {
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.username-div {
+    display: flex;
+    flex-direction: column;
+}
+.username {
+    color: #ddd;
+    text-decoration: none;
+}
+.subtle-username {
+    color: var(--line-color);
+}
+.username:hover {
+    color: #00eeff;
+    text-decoration: none;
+}

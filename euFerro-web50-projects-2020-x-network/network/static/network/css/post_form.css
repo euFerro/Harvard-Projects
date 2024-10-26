@@ -1,0 +1,36 @@
+/* Simple post form style ------------------------------------------ */
+.post-form-div {
+    width: 100%;
+}
+
+.text-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #00eeff;
+    width: 30vw;
+    height: 40px;
+    font-size: larger;
+    margin-right: 2vmin;
+    margin-top: 1vmin;
+}
+.text-input:focus {
+    border: none;
+}
+
+.post-btn {
+    background-color: #00eeff;
+    color: black;
+    font-size: large;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#file-input {
+    cursor: pointer;
+}

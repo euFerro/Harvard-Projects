@@ -1,0 +1,7 @@
+.RightBar {
+    display: flex;
+    flex-direction: column;
+    width: 30vmin;
+    height: 100vh;
+    overflow-y: scroll;
+}

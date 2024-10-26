@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <h2 class="mb-3 backCoolBlue" style="color:white">Search for Stocks</h2>
+    <form action="/quote" method="post">
+        <div class="mb-1">
+            <input class="form-control mx-auto w-auto {% if not_found %} is-invalid {% endif %}" name="symbol" placeholder="Search" type="text">
+        </div>
+        {% if not_found %}
+        <div style="color:red" class="mb-2">
+            No such stock was found
+        </div>
+        {% endif %}
+        <div class="mb-3 mt-2">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
+    {% if search %}
+    <h2 class="mb-4 backCoolGreen" style="color:white">Stock Found</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Symbol</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td style="color:#0088ff">{{ stock["name"] }}</td>
+            <td style="color:#00cc00">{{ stock["price"] }}</td>
+            <td style="color:#818181">{{ stock["symbol"] }}</td>
+        </tr>
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}

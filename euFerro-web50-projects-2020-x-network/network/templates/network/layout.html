@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link rel="icon" href="{% static 'network/svg/network.svg' %}">
+        <title>{% block title %}Social Network{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'network/css/app.css' %}">
+        <link rel="stylesheet" href="{% static 'network/css/sidebar.css' %}">
+        <link rel="stylesheet" href="{% static 'network/css/post_form.css' %}">
+        <link rel="stylesheet" href="{% static 'network/css/post.css' %}">
+        <link rel="stylesheet" href="{% static 'network/css/not_found.css' %}">
+        <link rel="stylesheet" href="{% static 'network/css/profile.css' %}">
+        <link rel="stylesheet" href="{% static 'network/css/components.css' %}">
+        <link rel="stylesheet" href="{% static 'network/css/main_header.css' %}">
+        <link rel="stylesheet" href="{% static 'network/css/explore.css' %}">
+
+        <script src="{% static 'network/scripts/main_layout.js' %}"></script>
+        <script src="{% static 'network/scripts/footer_btns.js' %}"></script>
+        {% block script %}
+        {% endblock %}
+    </head>
+
+    <body>
+
+        <div class="app-container">
+
+            <nav>
+                <div id="side-bar" class="side-bar-div">
+
+                    <div class="side-bar">
+    
+                        <div class="logo-div">
+                            <div class="logo">
+                                <img width="36px" height="36px" src="{% static 'network/svg/network.svg' %}">
+                            </div>
+                        </div>
+        
+                        <div class="side-item-div">
+                            <a class="side-item" href="{% url 'home' %}">
+                                <img width="32px" height="32px" src="{% static 'network/svg/homepage.svg' %}">
+                                <span class="side-item">Homepage</span>
+                            </a>
+                        </div>
+                        <div class="side-item-div">
+                            <a class="side-item" href="{% url 'explore' %}">
+                                <img width="32px" height="32px" src="{% static 'network/svg/search.svg' %}">
+                                <span class="side-item">Explore</span>
+                            </a>
+                        </div>
+                        {% if user.is_authenticated %}
+                            <div class="side-item-div">
+                                <a class="side-item" href="{% url 'profile' user.username %}">
+                                    <img width="32px" height="32px" src="{% static 'network/svg/user.svg' %}">
+                                    <span class="side-item">Profile</span>
+                                </a>
+                            </div>
+                            <div class="side-item-div">
+                                <a class="side-item" href="#">
+                                    <img width="32px" height="32px" src="{% static 'network/svg/new.svg' %}">
+                                    <span class="side-item">New Post</span>
+                                </a>
+                            </div>
+                        {% else %}
+                            <div class="side-item-div">
+                                <a class="side-item" href="{% url 'login' %}">Log In</a>
+                            </div>
+                            <div class="side-item-div">
+                                <a class="side-item" href="{% url 'register' %}">Register</a>
+                            </div>
+                        {% endif %}
+        
+                    </div>
+        
+                    {% if user.is_authenticated %}
+                    <div id="user-bar" class="side-item-div">
+                        <div class="post-profile-div">
+                            <a href="{% url 'profile' user.username %}">
+                                <img class="profile-pic" src="{{user.profile_picture.url}}">
+                            </a>
+                        </div>
+                        <div class="user-bar-item">
+                            <div class="username-div">
+                                <a class="name-link" href="{% url 'profile' user.username %}">
+                                    <strong class="username">{{ user.first_name }} {{ user.last_name }}</strong>
+                                </a>
+                                <div class="subtle-username">@{{ user.username }}</div>
+                            </div>
+                        </div>
+                        <div class="user-bar-item side-item-div">
+                            <a class="" href="{% url 'logout' %}">
+                                <img class="logout" src="{% static 'network/svg/logout.svg' %}">
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </nav>
+                
+            <main>
+                <div class="body">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </main>
+
+        </div>
+
+    </body>
+
+</html>

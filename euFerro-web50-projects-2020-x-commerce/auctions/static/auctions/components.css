@@ -1,0 +1,212 @@
+.super-auctions-logo {
+    color: white;
+    min-width: 290px;
+    width: 290px;
+    border: 4px solid blueviolet;
+    padding: 5px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, red, orange, blueviolet);
+    justify-self: start;
+    font-style: oblique;
+}
+
+.profile-div {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    margin-right: 5px;
+}
+.profile-link {
+    width: 50px; height: 50px;
+}
+.profile-img {
+    height: 100%; width: 100%; border-radius: 50%;  border: 2px solid blueviolet
+}
+
+.listing-div {
+    width: 16rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid blueviolet;
+}
+.listing-img-link {
+    height: 200px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black; 
+    border-radius: 15px;
+}
+.listing-img {
+    border-radius: 15px;
+    height: 202px;
+    width: 202px;
+}
+
+.subtle-text-warn {
+    color: gray;
+    font-size: calc(1rem + 1vmin);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vmin;
+    width: 100%;
+}
+
+.categ-btn {
+    text-decoration: none !important;
+    font-size: 3vmin;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    color: blueviolet;
+    border: 3px solid blueviolet;
+    border-radius: 15px;
+    padding: 15px;
+    width: 30vmin;
+}
+
+.categ-btn:hover {
+    color: lightyellow;
+    font-weight: bold;
+    background: linear-gradient(45deg, red, orange, blueviolet);
+    animation: categ-btn-anim 0.5s ease;
+}
+
+@keyframes categ-btn-anim {
+    0% {
+        opacity: 20%;
+        color: gold;
+    }
+    60% {
+        opacity: 50%;
+        font-weight: 600;
+        transform: rotateY(5deg)
+    }
+    100% {
+        opacity: 100%;
+        font-weight: 800;
+        transform: rotateY(-5deg);
+    }
+}
+
+.bid-form-div {
+    border: 5px solid blueviolet;
+    border-radius: 15px;
+    padding: 20px;
+}
+.bid-price {
+    color: green;
+    font-size: 32px;
+}
+.blue-pill {
+    margin-left: 10px;
+    font-size: 14px;
+    border-radius: 20px;
+    background-color: #0055dd;
+    color: white;
+    padding: 8px;
+}
+.listing-categ-pill {
+    margin-left: 10px;
+    font-size: 14px;
+    border-radius: 20px;
+    background: linear-gradient(45deg, red, orange, blueviolet);
+    color: white;
+    padding: 8px;
+}
+.red-pill {
+    font-size: calc(0.5rem + 1vmin);
+    border-radius: 20px;
+    background: linear-gradient(0deg, red, gold);
+    color: white;
+    padding: 8px;
+    font-style: italic;
+    font-weight: 800;
+}
+.card-text-subtle {
+    color: gray;
+    font-size: small;
+}
+
+.description-div {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.rank-div {
+    border: 4px solid gold;
+    border-radius: 10px;
+    padding: 20px;
+    background: radial-gradient(red, orange)
+}
+.rank-logo {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: yellow;
+    font-size: x-large;
+    font-weight: bolder;
+    width: max-content;
+    height: max-content;
+    text-shadow: 0px 0px 5px yellow;
+}
+.rank-bid {
+    border: 5px solid gold !important;
+    border-radius: 15px;
+    padding: 15px;
+    color: yellow;
+    font-weight: bolder;
+    font-size: x-large;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0px 0px 8px yellow;
+    background-color: transparent;
+}
+.rank-number {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    color: inherit;
+    border: 5px solid yellow;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+}
+.rank-value {
+    color: #00ff00;
+    text-shadow: 0px 0px 5px #00ff00;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.gray-div {
+    border: 1px solid lightgray;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+    background-color: #555555;
+    border-radius: 1vmin;
+}
+
+::-webkit-scrollbar-track {
+    color: gold;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(blueviolet, orange, red);
+    border-radius: 1vmin;
+    border: 3px solid gold;
+}
+::selection {
+    background: blueviolet;
+    color: white;
+}

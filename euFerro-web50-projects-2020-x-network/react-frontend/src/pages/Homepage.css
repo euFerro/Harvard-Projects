@@ -1,0 +1,59 @@
+#Homepage {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.all-posts-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: green;
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.nothing-here {
+    width: 100%;
+    font-size: large;
+    color: inherit;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.pagination-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+.pagination-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    cursor: pointer;
+    height: 25px;
+    width: 80px;
+    margin: 0px;
+}
+.prev-btn {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.next-btn {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 1px solid #777;
+}
+.inactive {
+    cursor: not-allowed;
+}

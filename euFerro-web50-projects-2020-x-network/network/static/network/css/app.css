@@ -1,0 +1,31 @@
+:root {
+    --profile-size: 40px;
+    --subtle-text-color: #777;
+    --line-color: #404040;
+    --hover-color: #080808;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.body {
+    position: relative;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: row;
+}
+
+::-webkit-scrollbar {
+    background-color: black;
+}
+::-webkit-scrollbar-button {
+    background-color: black;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #101010;
+}
+

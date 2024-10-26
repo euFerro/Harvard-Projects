@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy Stocks
+{% endblock %}
+
+{% block main %}
+    <h2 class="backCoolGreen" style="color:white">Buy</h2>
+    <form action="/buy" method="post">
+        <div class="mb-3">
+            <label for="symbol" class="form-label">Stock</label>
+            <input type="text" name="symbol" class="form-control mx-auto w-auto {% if invalid_stock or (invalid_stock and invalid_quant) %} is-invalid {% endif %}" id="symbol" placeholder="Symbol">
+            {% if invalid_stock %}
+                <div style="color:red">
+                    {{ msg }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <label for="stock-symbol" class="form-label">Quantity</label>
+            <input type="number" name="shares" min="1" class="form-control mx-auto w-auto {% if invalid_quant or (invalid_quant and invalid_stock) %} is-invalid {% endif %}" id="shares" placeholder="Quantity">
+            {% if invalid_quant %}
+                <div style="color:red">
+                    {{ msg }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">BUY</button>
+        </div>
+    </form>
+    {% if bought %}
+    <div class="container-fluid">
+        <div class="row" style="background-color:#00AA00; color:white"><h2>Purchase Made</h2></div>
+        <div class="row">
+            <div class="col">
+                Stock: {{ name }} ({{ symbol }})
+            </div>
+            <div class="col">
+                You bought <span class="coolBlue">{{ quantity }}</span> share(s) at <span style="color:#00AA00">{{ price }}</span>
+            </div>
+            <div class="col">
+                Total: <span class="coolBlue">{{ total }}</span>
+            </div>
+            <div class="col">
+                Your wallet: <span style="color:#0055FF">{{ money }}</span>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <script>
+        const queryString = window.location.search;
+        console.log(queryString);
+
+        const urlParams = new URLSearchParams(queryString);
+
+        const symbol = urlParams.get("symbol");
+        const shares = urlParams.get("shares");
+
+        console.log("symbol: " + symbol);
+        console.log("shares: " + shares);
+
+        document.getElementById("symbol").value = symbol;
+        document.getElementById("shares").value = shares;
+    </script>
+{% endblock %}

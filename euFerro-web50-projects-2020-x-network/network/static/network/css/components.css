@@ -1,0 +1,28 @@
+
+/* Button Styles */
+.primary-btn {
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid white;
+    color: black;
+    padding: 5px 15px;
+    font-weight: bold;
+    outline: none;
+}
+.primary-btn:hover {
+    background-color: #ddd;
+}
+.secondary-btn {
+    border-radius: 20px;
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    padding: 5px 15px;
+    font-weight: bold;
+    outline: none;
+}
+
+/* Text Colors */
+.subtle-text {
+    color: var(--subtle-text-color);
+}

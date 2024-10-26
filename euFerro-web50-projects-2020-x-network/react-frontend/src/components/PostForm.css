@@ -1,0 +1,135 @@
+/* Simple post form style ------------------------------------------ */
+.post-form-div {
+    width: 100%;
+}
+
+.text-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    width: 100%;
+    height: 40px;
+    font-size: larger;
+    margin-right: 2vmin;
+    margin-top: 1vmin;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding-right: 35px;
+}
+.text-input:focus {
+    border: none;
+}
+
+.primary-btn {
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid white;
+    color: black;
+    padding: 5px 15px;
+    font-weight: bold;
+    outline: none;
+    margin-right: 10px;
+}
+.primary-btn:hover {
+    animation-name: primaryBtnAnim;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in;
+}
+
+@keyframes primaryBtnAnim {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    50%{
+        transform: rotate(-3deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#file-input {
+    cursor: pointer;
+}
+
+.post-form-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+    color: var(--subtle-text-color);
+    width: 100%;
+}
+
+.x-btn {
+    fill: white;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: #303030;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-animation {
+    display: block;
+    height: max-content;
+    animation-name: post_appear;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+}
+
+.loading-animation {
+    width: 100%;
+    height: 6px;
+    animation-name: loading_bar;
+    background-color: #00ff00;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-iteration-count: infinite;
+    display: none;
+}
+
+@keyframes loading_bar {
+    0% {
+        width: 100%;
+        margin-left: 0%;
+    }
+    100% {
+        width: 0%;
+        margin-left: 100%;
+        display: none;
+    }
+}
+
+@keyframes post_appear {
+    0% {
+        opacity: 0;
+        height: 0%;
+    }
+    100% {
+        opacity: 1;
+        height: 100%;
+    }
+}

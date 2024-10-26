@@ -1,0 +1,13 @@
+sort1 uses: Bubble Sort
+
+How do you know?: With 50 thousand size , sort1 manage to handle sorted50000.txt in 1.0 to 1.2s and reversed50000.txt in about 6.0s
+just like bubble sort with omega of n and O of n^2.
+
+sort2 uses: Merge Sort
+
+How do you know?: Even with size of 50 thousand, sort2 manage to handle sorted50000.txt and reversed50000.txt basically in the same time, 1 to 1.2 seconds.
+
+sort3 uses: Selection Sort
+
+How do you know?: I checked that even with the sorted array it took about the same as a reversed one
+just like selection sort n^2 (theta).

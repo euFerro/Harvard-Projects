@@ -1,0 +1,199 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    {{listing.title}}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <header>
+        <div class="my-3">
+            <h1 class="" style="font-weight: bold;">
+                {{listing.title}}
+                {% if listing.closed %}<span class="red-pill">SOLD</span>{% endif %}
+                <span class="listing-categ-pill">{{listing.category}}</span>
+            </h1>
+            {% if user.is_authenticated %}
+                {% if not watchlisted %}
+                    <form action="{% url 'watchlist' %}" method="post">
+                        {% csrf_token %}
+                        <input name="operation" type="hidden" value="add">
+                        <input name="id" type="hidden" value="{{listing.id}}">
+                        <input type="submit" value="+ watchlist" class="btn btn-outline-success">
+                    </form>
+                {% else %}
+                    <form action="{% url 'watchlist' %}" method="post">
+                        {% csrf_token %}
+                        <input name="operation" type="hidden" value="remove">
+                        <input name="id" type="hidden" value="{{listing.id}}">
+                        <input type="submit" value="- watchlist" class="btn btn-outline-secondary">
+                    </form>
+                {% endif %}
+            {% else %}
+                <form action="{% url 'login' %}" method="get">
+                    <input type="submit" value="+ watchlist (login)" class="btn btn-outline-success">
+                </form>
+            {% endif %}
+        </div>
+    </header>
+    <main>
+        <div class="my-3" style="height: 50vmin; width: 50vmin; display: flex; align-items: center; justify-content: center; background-color: black; border-radius: 10px;">
+            <img src="{{listing.img.url}}" class="card-img-top" alt="{{listing.title}}" style="border-radius: 10px;">
+        </div>
+        <div class="my-3">
+            <div class="my-3 description-div">
+                <p style="color: gray;">
+                    <strong>Description</strong>
+                </p>
+                <hr>
+                <p>{{listing.description}}</p>
+            </div>
+            <div class="my-3 bid-form-div">
+                <p>
+                    <span class="bid-price">
+                        <strong>{% if listing.closed %}Sold at: {% endif %}$ {{listing.current_price}}</strong>
+                    </span>
+                    <span class="blue-pill">
+                        <strong>started at: {{listing.starting_price}}</strong>
+                    </span>
+                </p>
+                {% if not listing.closed and user.is_authenticated %}
+                <form action="{% url 'listings' listing.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="bid" class="form-label">Place a Bid</label>
+                        <input name="action" type="hidden" value="BID">
+                        <input name="user_id" type="hidden" value="{{user.id}}">
+                        <input name="value" type="number" step="0.01" class="form-control {% if bid_success %}is-valid{% endif %}{% if bid_error %}is-invalid{% endif %}" id="bid-form-control" placeholder="min: ${{min_price}}" min="{{min_price}}">
+                        {% if bid_success %}
+                            <div class="form-text col" style="color: green">{{bid_success}}</div>
+                        {% endif %}
+                        {% if bid_error %}
+                            <div class="form-text col" style="color: red;">{{bid_error}}</div>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-success mb-3">Place Bid</button>
+                </form>
+                    {% if not user.is_authenticated %}
+                    <a href="{% url 'login' %}" class="btn btn-success">Bid (login)</a>
+                    {% endif %}
+                {% endif %}
+                {% if closed_success %}
+                    <div class="form-text" style="color: green;">{{closed_success}}</div>
+                {% endif %}
+                {% if closed_invalid %}
+                    <div class="form-text" style="color: red;">{{invalid_method}}</div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="my-3 rank-div">
+            <span class="rank-logo">RANKING: Top 3 Bids</span>
+            <hr>
+            <div class="row container">
+                {% for index, bid in bids %}
+                <div class="col-12 rank-bid">
+                    <div class="rank-number mx-2">
+                        {{index}}
+                    </div>
+                    <div class="rank-username mx-2">
+                        {{bid.user.username}}
+                    </div>
+                    <div class="rank-value mx-2">
+                        ${{bid.value}}
+                    </div>
+                    {% if listing.closed %}
+                        {% if index is 0 %}
+                        <span class="red-pill">WINNER</span>
+                        {% endif %}
+                    {% else %}
+                        {% if index is 0 and listing.owner == user %}
+                        <form action="{% url 'close' listing.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn blue-pill">Sell to {{bid.user.username}}</button>
+                        </form>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                {% empty %}
+                <div class="col rank-bid">No Bids yet.</div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+        <div class="my-3 gray-div">
+            <h3 style="color: gray;">
+                Details
+            </h3>
+            <hr>
+            <div class="row">
+                <p class="col-4"><span style="color: gray;">Listed by:</span> {{listing.owner}}</p>
+            </div>
+            <div class="row">
+                <p class="col-4"><span style="color: gray;">Created at:</span> {{listing.created_at}}</p>
+            </div>
+        </div>
+        <div class="my-3 gray-div">
+            <h3 style="color: gray;">
+                Comments
+            </h3>
+            <hr>
+            {% if user.is_authenticated %}
+                <div class="row m-2" style="display: flex; align-items: center; border: 1px solid lightblue; border-radius: 15px; padding: 10px;">
+                    <div class="m-1" style="width: 40px; height: 40px;">
+                        <img src="{{user.profile_picture.url}}" style="width: 100%; height: 100%; border-radius: 50%;">
+                    </div>
+                    <div class="col-2">
+                        <strong>{{user.username}}</strong>
+                    </div>
+                    <div class="col-12 my-2">
+                        <form action="{% url 'listings' listing.id %}" method="post" class="row" id="my_form">
+                            {% csrf_token %}
+                            <input name="action" type="hidden" value="COMMENT">
+                            <input name="user_id" type="hidden" value="{{user.id}}">        
+                            <input name="comment_text" type="text" class="form-control col-10 mx-2 {% if success %}is-valid{% endif %}{% if error %}is-invalid{% endif %}" placeholder="add a comment...">
+                            <input type="submit" value="send" class="btn btn-primary col-1 mx-2">
+                            {% if success %}
+                            <div class="form-textc col" style="color: green">{{success}}</div>
+                            {% endif %}
+                            {% if error %}
+                            <div class="form-text col" style="color: red;">{{error}}</div>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
+            {% for comment in comments %}
+                <div class="row m-2" style="display: flex; align-items: center; border: 1px solid lightblue; border-radius: 15px; padding: 10px;">
+                    <div class="m-1" style="width: 40px; height: 40px;">
+                        <img src="{{comment.user.profile_picture.url}}" style="width: 100%; height: 100%; border-radius: 50%;">
+                    </div>
+                    <div class="col-2">
+                        <strong>{{comment.user.username}}</strong>
+                    </div>
+                    {% if comment.user == user %}
+                        <div class="col" style="display: flex; justify-content: end; padding-right: 5px; padding-top: 5px;">
+                            <form action="{% url 'remove_comment' listing.id %}" method="post">
+                                {% csrf_token %}
+                                <input name="comment_id" value="{{comment.id}}" type="hidden">
+                                <button type="submit" class="btn btn-outline-danger" style="border-radius: 10px;">
+                                    <strong>x</strong>
+                                </button>
+                            </form>
+                        </div>
+                    {% endif %}
+                    <div class="col-12 my-3">
+                        {{comment.text}}
+                    </div>
+                </div>
+            {% empty %}
+                <div class="row m-3">
+                    <p class="col-4">
+                        <span style="color: gray;">No comments yet.</span>
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+
+</div>
+{% endblock %}

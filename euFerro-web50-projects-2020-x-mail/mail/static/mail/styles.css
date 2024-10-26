@@ -1,0 +1,35 @@
+textarea {
+    min-height: 400px;
+}
+
+.email-entry {
+    padding: 15px;
+    margin: 5px 0;
+    border: 2px solid gray;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.email-entry:hover {
+    background-color: aliceblue;
+    color: blue;
+}
+
+.timestamp {
+    color: gray;
+    font-size: 1.2rem;
+}
+
+.mail-message {
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.subject {
+    border: 2px solid purple;
+    border-radius: 5px;
+    color: purple;
+    padding: 15px;
+}

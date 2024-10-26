@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block body %}
+    <nav aria-label="breadcrumb" class="mb-2">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'wiki:index' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{title}}</li>
+            <form action="{% url 'wiki:editpage' %}" method="get">
+                <input type="hidden" value="{{title}}" name="entry_title">
+                <button  class="btn btn-secondary mx-4">
+                    Edit this page
+                </button>
+            </form>
+        </ol>
+    </nav>
+    <div class="container">
+        {{html|safe}}
+    </div>
+{% endblock %}

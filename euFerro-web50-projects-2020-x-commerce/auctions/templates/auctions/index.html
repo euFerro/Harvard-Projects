@@ -1,0 +1,46 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <header>
+            <h2>{{title}}</h2>
+        </header>
+        <div class="row">
+            {% for listing in listings %}
+                <div class="card col-6-md m-2 listing-div">
+                    <div class="m-3 listing-img-link">
+                        <a href="{% url 'listings' listing.id %}">
+                            <img src="{{listing.img.url}}" class="card-img-top listing-img" alt="{{listing.title}}">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <strong>{{listing.title}}</strong>
+                            {% if listing.closed %}<span class="red-pill">SOLD</span>{% endif %}
+                        </h5>
+                        <p class="card-text card-text-subtle">{{listing.description}}</p>
+                        <p class="card-text card-text-subtle">{{listing.created_at}}</p>
+                        <p class="card-text">
+                            <span style="color: green; font-size: 25px;">
+                                <strong>$ {{listing.current_price}}</strong>
+                            </span>
+                        </p>
+                        {%if not listing.closed %}
+                        <a href="{% url 'listings' listing.id %}" class="btn btn-primary" style="width: 80px;">Bid</a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% empty %}
+                <div class="subtle-text-warn">
+                    <div>
+                        No Active {{title}} Listings yet.
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" translate="yes">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="The best auction in the world only 1 of 1 items">
+        <title>{% block title %}Auctions{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+        <link href="{% static 'auctions/components.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div style="display: flex; align-items: center;">
+                <div class="super-auctions-logo">
+                    <h2>
+                        <strong># Super Auctions</strong>
+                    </h2>
+                </div>
+                {% if user.is_authenticated %}
+                    <div class="row profile-div">
+                        <div class="m-2">
+                            <strong>{{ user.username }}</strong>
+                        </div>
+                        <a class="m-2 profile-link">
+                            <img src="{{user.profile_picture.url}}" class="profile-img">
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="row" style="display: flex ;justify-content: end; width: 100%; margin-right: 5px;">
+                        <div class="m-2" style="display: flex; align-items: center;">
+                            <strong>Log in</strong>
+                        </div>
+                        <a href="{% url 'login' %}" class="m-2" style="width: 50px; height: 50px;">
+                            <img src="{% static 'auctions/imgs/default.jpeg' %}" style="height: 100%; width: 100%; border-radius: 50%;  border: 2px dashed blueviolet">
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="my-3">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'categories' %}">Categories</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'watchlist' %}">Watchlist</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'createlisting' %}">Create Listing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-danger" href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </header>
+        <hr style="border-top: 1px dashed blueviolet;">
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

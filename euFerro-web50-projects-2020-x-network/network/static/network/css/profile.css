@@ -1,0 +1,29 @@
+/* Profile header style ------------------------------------------ */
+.profile-header {
+    height: 100%;
+    width: 100%;
+    padding: 2vmin;
+    border: 1px solid var(--line-color);
+}
+.profile-img-div {
+    height: 20vmin;
+    width: 20vmin;
+    border-radius: 50%;
+}
+.profile-img {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+}
+
+.profile-header-item {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1vmin;
+    margin-right: 2vmin;
+}
+
+.follow-div {
+    position: absolute;
+    right: 3%;
+}

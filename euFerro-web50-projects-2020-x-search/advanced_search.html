@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Google Advanced Search</title>
+        <link rel="stylesheet" href="style/style.css">
+    <head>
+    <body>
+        <div id="flex-container">
+            <div>
+                <div id="header-advanced"> <!--HEADER-->
+                    <div id="google-mini-logo">
+                        <img src="images/googlelogo_light_color_272x92dp.png">
+                    </div>
+                    <div>
+                        <a href="./index.html">Google Search</a>
+                        <a href="./images.html">Images</a>
+                    </div>
+                </div>
+            </div>
+            <div id="appbar">
+                <label>Advanced Search</label>
+            </div>
+            <div style="margin: 0; padding: 0; border: 1px solid #383838;"></div>
+            <div style="height: 100%;">
+                <form action="https://www.google.com.br/search">
+                    <div id="form-advanced-container">
+                        <div id="input-adv" style="display: flex;">
+                            <div class="input-adv-item label adv-header"><label>Find pages with...</label></div>
+                            <div class="input-adv-item"></div>
+                            <div class="input-adv-item vanish adv-header">To do this in the search box.</div>
+                        </div>
+                        <div class="input-adv pad">
+                            <div class="input-adv-item label"><label>all these words:</label></div>
+                            <div class="input-adv-item"><input type="text" name="as_q"></div>
+                            <div class="input-adv-item vanish small-letter">Type the important words: tri-colour rat terrier</div>
+                        </div>
+                        <div class="input-adv">
+                            <div class="input-adv-item label"><label>this exact word or phrase:</label></div>
+                            <div class="input-adv-item"><input type="text" name="as_epq"></div>
+                            <div class="input-adv-item vanish small-letter">Put exact words in quotes: "rat terrier"</div>
+                        </div>
+                        <div class="input-adv">
+                            <div class="input-adv-item label"><label>any of these words:</label></div>
+                            <div class="input-adv-item"><input type="text" name="as_oq"></div>
+                            <div class="input-adv-item vanish small-letter">Type OR between all the words you want: miniature OR standard</div>
+                        </div>
+                        <div class="input-adv">
+                            <div class="input-adv-item label"><label>none of these words:</label></div>
+                            <div class="input-adv-item"><input type="text" name="as_eq"></div>
+                            <div class="input-adv-item vanish small-letter">Put a minus sign just before words that you don't want: -rodent, -"Jack Russell"</div>
+                        </div>
+                        <div class="input-adv-submit">
+                            <button id="blue-aq-button" type="submit">Advanced Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="footer"> <!--FOOTER-->
+                <div id="country-tab">Brazil</div>
+                <div class="footer-links-container">
+                    <div>
+                        <a class="foot-link" href="https://about.google/?utm_source=google-BR&utm_medium=referral&utm_campaign=hp-footer&fg=1">About</a>
+                        <a class="foot-link" href="https://ads.google.com/">Advertising</a>
+                        <a class="foot-link" href="https://smallbusiness.withgoogle.com/">Business</a>
+                        <a class="foot-link" href="https://google.com/search/howsearchworks/?fg=1">How Search works</a>
+                    </div>
+                    <div>
+                        <a class="foot-link">Privacy</a>
+                        <a class="foot-link">Terms</a>
+                        <a class="foot-link">Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

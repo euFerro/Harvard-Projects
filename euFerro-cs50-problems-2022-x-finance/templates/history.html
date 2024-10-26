@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<h2 class="backCoolBlue" style="color:white">History</h2>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Transaction</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Value</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for register in history %}
+        <tr>
+            <td>
+                {{ register["date_time"] }}
+            </td>
+            <td>
+                {{ register["transaction_type"] }}
+            </td>
+            <td>
+                {{ register["stock"] }} ({{ register["symbol"] }})
+            </td>
+            <td>
+                {{ register["quantity"] }}
+            </td>
+            <td>
+                {{ register["single_price"] }}
+            </td>
+            <td>
+                {{ register["total_price"] }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  </div>
+{% endblock %}

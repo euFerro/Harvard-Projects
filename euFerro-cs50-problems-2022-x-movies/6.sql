@@ -1,0 +1,1 @@
+SELECT SUM(rating)/COUNT(*) AS 'avg rating from 2012' FROM movies JOIN ratings ON movies.id = ratings.movie_id WHERE movies.year = 2012;

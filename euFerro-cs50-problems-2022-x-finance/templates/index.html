@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+<h2 class="backCoolBlue" style="color:white">Portfolio</h2>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Stock</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for hold in holdings %}
+        <tr>
+            <td>
+                {{ hold["symbol"] }} <span class="coolGray">({{ hold["price"] }})</span>
+            </td>
+            <td>
+                <span class="coolGray"c>{{ hold["quantity"] }}</span>
+            </td>
+            <td>
+                <span class="coolPurple">{{ hold["amount"] }}</span>
+            </td>
+            <td>
+                <a href="/buy?symbol={{ hold['symbol'] }}&shares={{ hold['quantity'] }}" class="btn btn-success">Buy</a>
+                <a href="/sell?symbol={{ hold['symbol'] }}&shares={{ hold['quantity'] }}" class="btn btn-danger">Sell</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col">
+        Portfolio's value: <span class="coolBlue">{{ hold }}</span>
+    </div>
+    <div class="col">
+        Wallet: <span class="coolBlue">{{ cash }}</span>
+    </div>
+    <div class="col">
+        Total: <span class="coolGreen">{{ total }}</span>
+    </div>
+  </div>
+{% endblock %}

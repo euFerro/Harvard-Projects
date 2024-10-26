@@ -1,0 +1,30 @@
+/* Footer btn styles */
+.like-div, .comment-div {
+    margin-right: 3vmin;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    height: fit-content;
+    width: fit-content;
+    cursor: pointer;
+}
+.footer-btn-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+}
+.footer-svg {
+    height: 22px;
+    width: 22px;
+}
+.footer-path {
+    fill: #777;
+}
+.footer-num {
+    margin-left: 5px;
+}

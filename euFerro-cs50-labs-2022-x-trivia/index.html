@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            function checkAnswerOne(event) {
+
+                var triggerObj = event.srcElement;
+                var status = document.getElementById("status_1");
+                var correct = "3";
+
+                if(triggerObj.id === correct) {
+                    document.getElementById("1").style.backgroundColor = "#d9edff";
+                    document.getElementById("2").style.backgroundColor = "#d9edff";
+                    document.getElementById("4").style.backgroundColor = "#d9edff";
+                    triggerObj.style.backgroundColor = "green";
+                    status.style.color = "green";
+                    status.innerHTML = "Correct";
+                    return;
+                } else if (triggerObj.id === "1") {
+                    document.getElementById("2").style.backgroundColor = "#d9edff";
+                    document.getElementById("3").style.backgroundColor = "#d9edff";
+                    document.getElementById("4").style.backgroundColor = "#d9edff";
+                    triggerObj.style.backgroundColor = "red";
+                    status.style.color = "red";
+                    status.innerHTML = "Incorrect";
+                } else if (triggerObj.id === "2") {
+                    document.getElementById("1").style.backgroundColor = "#d9edff";
+                    document.getElementById("3").style.backgroundColor = "#d9edff";
+                    document.getElementById("4").style.backgroundColor = "#d9edff";
+                    triggerObj.style.backgroundColor = "red";
+                    status.style.color = "red";
+                    status.innerHTML = "Incorrect";
+                } else {
+                    document.getElementById("1").style.backgroundColor = "#d9edff";
+                    document.getElementById("2").style.backgroundColor = "#d9edff";
+                    document.getElementById("3").style.backgroundColor = "#d9edff";
+                    triggerObj.style.backgroundColor = "red";
+                    status.style.color = "red";
+                    status.innerHTML = "Incorrect";
+                }
+            }
+
+            function checkAnswerTwo() {
+                var input = document.getElementById("input_answer").value;
+                var status = document.getElementById("status_2");
+                var answerNum = "10";
+                var answerWord = "TEN";
+
+                if (input.includes(answerNum) || input.toUpperCase().includes(answerWord)) {
+                    status.style.color = "green";
+                    status.innerHTML = "Correct";
+                    return;
+                }
+                status.style.color = "red";
+                status.innerHTML = "Incorrect";
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the volume of a cube in liters with side s=3 meters</h3>
+                <button id="1" onclick="checkAnswerOne(event);">2700 liters</button>
+                <button id="2" onclick="checkAnswerOne(event);">900 liters</button>
+                <button id="3" onclick="checkAnswerOne(event);" class="correct">27,000 liters</button>
+                <button id="4" onclick="checkAnswerOne(event);">9000 liters</button>
+                <span id="status_1"></span><br>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>How many legs does a lobster have?</h3>
+                <input type="text" id="input_answer">
+                <button onclick="checkAnswerTwo();">Submit</button>
+                <span id="status_2"></span><br>
+            </div>
+        </div>
+    </body>
+</html>
